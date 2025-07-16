@@ -88,12 +88,12 @@ func main() {
 	v1Router.Get("/healthz", handlerReadiness)
 
 	router.Mount("/v1", v1Router)
-	srv := &http.Server {
-    	Addr:              ":" + port,
-    	Handler:           router,
-    	ReadHeaderTimeout: 5 * time.Second,  // wait max 5 seconds for headers
-    	ReadTimeout:       10 * time.Second, // optional: max time to read entire request
-    	WriteTimeout:      10 * time.Second, // optional: max time to write response
+	srv := &http.Server{
+		Addr:              ":" + port,
+		Handler:           router,
+		ReadHeaderTimeout: 5 * time.Second,  // wait max 5 seconds for headers
+		ReadTimeout:       10 * time.Second, // optional: max time to read entire request
+		WriteTimeout:      10 * time.Second, // optional: max time to write response
 	}
 
 	log.Printf("Serving on port: %s\n", port)
