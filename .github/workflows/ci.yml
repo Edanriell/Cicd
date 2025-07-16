@@ -16,7 +16,7 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v5
         with:
-          go-version: '1.22'
+          go-version: 1.22
 
       - name: Run tests
         run: go test ./... -cover
@@ -32,16 +32,8 @@ jobs:
       - name: Set up Go
         uses: actions/setup-go@v5
         with:
-          go-version: '1.22'
+          go-version: 1.22
 
-      - name: Check formatting
-        run: |
-          output=$(go fmt ./...)
-          if [ -n "$output" ]; then
-            echo "❌ Code is not properly formatted:"
-            echo "$output"
-            exit 1
-          else
-            echo "✅ Code is properly formatted"
-          fi
+      - name: Check Go formatting
+        run: test -z "$(go fmt ./...)"
 
